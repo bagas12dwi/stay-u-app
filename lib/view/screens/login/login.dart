@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:stay_u_app/view/constant/colors.dart';
 import 'package:stay_u_app/view/constant/components/rounded_button.dart';
 import 'package:stay_u_app/view/constant/components/rounded_input_field.dart';
+import 'package:stay_u_app/view/screens/home/home.dart';
 import 'package:stay_u_app/view/screens/register/register.dart';
 
 class Login extends StatefulWidget {
@@ -48,12 +49,12 @@ class _LoginState extends State<Login> {
                   SizedBox(
                     height: 20.h,
                   ),
-                  RoundedButton(text: "LOGIN", press: () {}),
+                  RoundedButton(text: "LOGIN", press: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Home()))),
                   SizedBox(
                     height: 10.h,
                   ),
                   Text(
-                    "Sudah Punya Akun ? ",
+                    "Belum Punya Akun ? ",
                     style: TextStyle(fontSize: 10.h),
                   ),
                   RoundedButton(
