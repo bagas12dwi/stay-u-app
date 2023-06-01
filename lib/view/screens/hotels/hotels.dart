@@ -1,24 +1,44 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:stay_u_app/controllers/hotel_controller.dart';
+import 'package:stay_u_app/view/constant/colors.dart';
+import 'package:stay_u_app/view/screens/hotels/components/hotel_lists.dart';
+import 'package:get/get.dart';
 
-class Hotels extends StatefulWidget {
-  const Hotels({Key? key}) : super(key: key);
+class Hotels extends StatelessWidget {
+  Hotels({Key? key}) : super(key: key);
 
-  @override
-  State<Hotels> createState() => _HotelsState();
-}
+  final HotelController hotelController = Get.put(HotelController());
 
-class _HotelsState extends State<Hotels> {
+
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-          child: Container(
-            child: const Center(
-              child: Text(
-                "Halaman Hotel",
+    return Padding(
+      padding: EdgeInsets.all(10.h),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                "Kamar Tersedia",
+                style: TextStyle(
+                    color: kDark,
+                    fontSize: 16.h,
+                    fontWeight: FontWeight.bold
+                ),
               ),
-            ),
-          )
+              GestureDetector(
+                onTap: () => hotelController.getHotel(),
+                  child: const Icon(
+                      Icons.refresh)
+              )
+            ],
+          ),
+          HotelLists()
+        ],
+      ),
     );
   }
 }

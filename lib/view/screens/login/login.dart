@@ -49,7 +49,7 @@ class _LoginState extends State<Login> {
                   SizedBox(
                     height: 20.h,
                   ),
-                  RoundedButton(text: "LOGIN", press: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Home()))),
+                  RoundedButton(text: "LOGIN", press: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) =>  Home()))),
                   SizedBox(
                     height: 10.h,
                   ),

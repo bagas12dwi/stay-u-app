@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:stay_u_app/controllers/hotel_controller.dart';
 import 'package:stay_u_app/view/constant/colors.dart';
 import 'package:stay_u_app/view/screens/home/components/recomendation.dart';
 import 'package:stay_u_app/view/screens/home/components/room_type.dart';
+import 'package:get/get.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class HomeScreen extends StatelessWidget {
+  HomeScreen({Key? key}) : super(key: key);
 
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
+  final HotelController hotelController = Get.put(HotelController());
 
-class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -47,13 +46,23 @@ class _HomeScreenState extends State<HomeScreen> {
           SizedBox(height: 10.h,),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.h),
-            child: Text(
-              "Rekomendasi",
-              style: TextStyle(
-                  color: kDark,
-                  fontSize: 20.h,
-                  fontWeight: FontWeight.bold
-              ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "Rekomendasi",
+                  style: TextStyle(
+                      color: kDark,
+                      fontSize: 20.h,
+                      fontWeight: FontWeight.bold
+                  ),
+                ),
+                GestureDetector(
+                    onTap: () => hotelController.getRekomendasi(),
+                    child: const Icon(
+                        Icons.refresh)
+                )
+              ],
             ),
           ),
           SizedBox(height: 10.h,),

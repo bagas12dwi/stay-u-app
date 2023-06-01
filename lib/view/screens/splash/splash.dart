@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stay_u_app/view/constant/colors.dart';
 import 'package:stay_u_app/view/constant/components/rounded_button.dart';
 import 'package:stay_u_app/view/screens/login/login.dart';
+import 'package:get/get.dart';
 
 class Splash extends StatelessWidget {
   const Splash({Key? key}) : super(key: key);
@@ -35,10 +36,7 @@ class Splash extends StatelessWidget {
                               child: RoundedButton(
                                 text: "Get Started",
                                 color: kPrimaryColor,
-                                press: () {
-                                  Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) => const Login()));
-                                },
+                                press: () => Get.to(()=> Login())
                               ),
                             ),
                           )
