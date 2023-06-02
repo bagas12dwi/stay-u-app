@@ -10,16 +10,22 @@ import 'package:get/get.dart';
 import 'package:stay_u_app/helpers/helper.dart';
 
 class RecommendationItem extends StatelessWidget {
-  const RecommendationItem({Key? key, required this.data}) : super(key: key);
+  RecommendationItem({Key? key, required this.data}) : super(key: key);
 
   final Hotel data;
-  final String image = "https://images.unsplash.com/photo-1571508601891-ca5e7a713859?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTF8fGZhc2hpb258ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60";
-
+  String image = "-";
 
   @override
   Widget build(BuildContext context) {
+    if(data.tipeKamar == "Standard"){
+      image = "https://images.unsplash.com/photo-1541123356219-284ebe98ae3b?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTF8fGZhc2hpb258ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60";
+    } else if(data.tipeKamar == "Superior"){
+      image = "https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTF8fGZhc2hpb258ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60";
+    } else {
+      image = "https://images.unsplash.com/photo-1571508601891-ca5e7a713859?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTF8fGZhc2hpb258ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60";
+    }
     return GestureDetector(
-      onTap: () => Get.to(() => const HotelDetails()),
+      onTap: () => Get.to(() => HotelDetails(hotelId: data.id,)),
       child: Container(
         margin: EdgeInsets.only(right: 10.h),
         padding: EdgeInsets.all(10.h),

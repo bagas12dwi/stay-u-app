@@ -6,6 +6,8 @@ class HotelController extends GetxController{
   var isLoading = false.obs;
   var hotelList = <Hotel>[].obs;
   var hotelRecommendation = <Hotel>[].obs;
+  var hotel = Rxn<Hotel>();
+
 
   @override
   void onInit() {
@@ -35,6 +37,15 @@ class HotelController extends GetxController{
       print(e);
     } finally {
       isLoading.value = true;
+    }
+  }
+
+  void getDetail(int idHotel) async {
+    try {
+      var hotelData = await HotelProvider().getDetail(idHotel);
+      hotel.value = hotelData;
+    } catch (e) {
+      print(e);
     }
   }
 }

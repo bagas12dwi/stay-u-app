@@ -1,21 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:stay_u_app/controllers/login_controller.dart';
 import 'package:stay_u_app/view/constant/colors.dart';
 import 'package:stay_u_app/view/constant/components/rounded_button.dart';
 import 'package:stay_u_app/view/constant/components/rounded_input_field.dart';
 import 'package:stay_u_app/view/screens/home/home.dart';
 import 'package:stay_u_app/view/screens/register/register.dart';
+import 'package:get/get.dart';
 
-class Login extends StatefulWidget {
-  const Login({super.key});
+class Login extends StatelessWidget {
+  Login({super.key});
 
-  @override
-  State<Login> createState() => _LoginState();
-}
-
-class _LoginState extends State<Login> {
   final String assetName = "./assets/login.svg";
+  final LoginController loginController = Get.put(LoginController());
 
   @override
   Widget build(BuildContext context) {
@@ -44,12 +42,12 @@ class _LoginState extends State<Login> {
                   SizedBox(
                     height: 10.h,
                   ),
-                  const RoundedInputField(hintText: "email"),
-                  const RoundedPasswordField(),
+                  RoundedInputField(hintText: "email", controller: loginController.emailController,),
+                  RoundedPasswordField(controller: loginController.passwordController),
                   SizedBox(
                     height: 20.h,
                   ),
-                  RoundedButton(text: "LOGIN", press: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) =>  Home()))),
+                  RoundedButton(text: "LOGIN", press: () => loginController.login()),
                   SizedBox(
                     height: 10.h,
                   ),

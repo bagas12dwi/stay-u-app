@@ -9,4 +9,10 @@ class Helpers {
     );
     return currencyFormatter.format(number);
   }
+
+  static String getFirstText(String text) {
+    String textFirst = text;
+    List<String> output = textFirst.split(" ");
+    return output[0];
+  }
 }
