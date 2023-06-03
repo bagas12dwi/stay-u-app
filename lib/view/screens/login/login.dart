@@ -58,8 +58,7 @@ class Login extends StatelessWidget {
                   RoundedButton(
                       text: "Register",
                       color: kSecondaryColor,
-                      press: () => Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const Register())))
+                      press: () => Get.to(() => Register()))
                 ],
               ),
             ],

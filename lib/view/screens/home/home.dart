@@ -57,26 +57,21 @@ class Home extends StatelessWidget {
     var user = userController.user.value;
     return Row(
       children:  [
-        Icon(
+        const Icon(
           Icons.person,
           color: kPrimaryColor,
           size: 20,
         ),
-        SizedBox(
+        const SizedBox(
           width: 10,
         ),
         Text(
           "Selamat Datang, " + Helpers.getFirstText((user?.nama ?? "")),
-          style: TextStyle(
+          style: const TextStyle(
             color: kDark,
             fontSize: 20,
           ),
         ),
-        const Spacer(),
-        Icon(
-          Icons.logout,
-          color: kPrimaryColor,
-          size: 20,)
       ],
     );
   }
