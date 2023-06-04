@@ -10,9 +10,10 @@ import 'package:get/get.dart';
 import 'package:stay_u_app/helpers/helper.dart';
 
 class RecommendationItem extends StatelessWidget {
-  RecommendationItem({Key? key, required this.data}) : super(key: key);
+  RecommendationItem({Key? key, required this.data, required this.userId}) : super(key: key);
 
   final Hotel data;
+  final int userId;
   String image = "-";
 
   @override
@@ -25,7 +26,7 @@ class RecommendationItem extends StatelessWidget {
       image = "https://images.unsplash.com/photo-1571508601891-ca5e7a713859?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTF8fGZhc2hpb258ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60";
     }
     return GestureDetector(
-      onTap: () => Get.to(() => HotelDetails(hotelId: data.id,)),
+      onTap: () => Get.to(() => HotelDetails(hotelId: data.id, userId: userId,)),
       child: Container(
         margin: EdgeInsets.only(right: 10.h),
         padding: EdgeInsets.all(10.h),

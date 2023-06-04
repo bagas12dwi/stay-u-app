@@ -6,9 +6,10 @@ import 'package:stay_u_app/view/screens/hotels/components/hotel_lists.dart';
 import 'package:get/get.dart';
 
 class Hotels extends StatelessWidget {
-  Hotels({Key? key}) : super(key: key);
+  Hotels({Key? key, required this.userId}) : super(key: key);
 
   final HotelController hotelController = Get.put(HotelController());
+  final int userId;
 
 
   @override
@@ -36,7 +37,7 @@ class Hotels extends StatelessWidget {
               )
             ],
           ),
-          HotelLists()
+          HotelLists(userId: userId,)
         ],
       ),
     );

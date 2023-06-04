@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stay_u_app/controllers/login_controller.dart';
 import 'package:stay_u_app/helpers/helper.dart';
+import 'package:stay_u_app/models/user_model.dart';
 import 'package:stay_u_app/view/constant/colors.dart';
 import 'package:stay_u_app/view/screens/home/home_screen.dart';
 import 'package:stay_u_app/view/screens/hotels/hotels.dart';
@@ -10,18 +11,15 @@ import 'package:get/get.dart';
 
 class Home extends StatelessWidget {
   final int id;
-  final LoginController userController = Get.find<LoginController>();
+  final LoginController userController = Get.put(LoginController());
 
   Home({super.key, required this.id}) {
     userController.getDetail(id);
   }
-
-  final MyController myController = Get.put(MyController());
-
   
-
   @override
   Widget build(BuildContext context) {
+    final MyController myController = Get.put(MyController(userController: userController, userId: id));
     return Obx(() =>  Scaffold(
           backgroundColor: kLight,
           body: CustomScrollView(
@@ -77,22 +75,28 @@ class Home extends StatelessWidget {
   }
 }
 
-class MyController extends GetxController{
-  var screens = [
-    HomeScreen(),
-    Hotels()
-  ].obs;
-  var selectedIndex = 0.obs;
+class MyController extends GetxController {
+  late LoginController userController;
+  late int userId;
 
+  MyController({required this.userController, required this.userId});
+
+  var screens = <Widget>[].obs;
+  var selectedIndex = 0.obs;
 
   @override
   void onInit() {
     super.onInit();
+    screens.addAll([
+      HomeScreen(userId: userId),
+      Hotels(userId: userId),
+    ]);
     onTapped(selectedIndex.value);
   }
 
-  void onTapped (var index){
+  void onTapped(int index) {
     selectedIndex.value = index;
   }
 }
+
 

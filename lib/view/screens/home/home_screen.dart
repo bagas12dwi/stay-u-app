@@ -7,9 +7,10 @@ import 'package:stay_u_app/view/screens/home/components/room_type.dart';
 import 'package:get/get.dart';
 
 class HomeScreen extends StatelessWidget {
-  HomeScreen({Key? key}) : super(key: key);
+  HomeScreen({Key? key, required this.userId}) : super(key: key);
 
   final HotelController hotelController = Get.put(HotelController());
+  final int userId;
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +67,7 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
           SizedBox(height: 10.h,),
-          Recommendation()
+          Recommendation(userId: userId,)
         ],
       ),
     );

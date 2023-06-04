@@ -9,15 +9,17 @@ import 'package:stay_u_app/view/constant/colors.dart';
 import 'package:stay_u_app/view/constant/components/rounded_button.dart';
 import 'package:stay_u_app/view/screens/home/components/custom_image.dart';
 import 'package:get/get.dart';
+import 'package:stay_u_app/view/screens/hotels/booking.dart';
 
 class HotelDetails extends StatelessWidget {
   final HotelController hotelController = Get.find<HotelController>();
   final int hotelId;
+  final int userId;
   final bool isNetwork = true;
   String image = "https://images.unsplash.com/photo-1571508601891-ca5e7a713859?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTF8fGZhc2hpb258ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60";
   String deskripsi = "";
 
-  HotelDetails({super.key, required this.hotelId}){
+  HotelDetails({super.key, required this.hotelId, required this.userId}){
     hotelController.getDetail(hotelId);
   }
 
@@ -125,7 +127,7 @@ class HotelDetails extends StatelessWidget {
             const Spacer(),
             Center(child: Padding(
               padding: EdgeInsets.all(20.h),
-              child: RoundedButton(text: "BOOKING", press: () {}),
+              child: RoundedButton(text: "BOOKING", press: () => Get.to(() => Booking(hotelId: hotelId, userId: userId))),
             ))
           ],
         );

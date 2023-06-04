@@ -5,7 +5,9 @@ import 'package:stay_u_app/view/screens/home/components/recommendation_item.dart
 import 'package:get/get.dart';
 
 class HotelLists extends StatelessWidget {
-  const HotelLists({Key? key}) : super(key: key);
+  HotelLists({Key? key, required this.userId}) : super(key: key);
+
+  final int userId;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +18,7 @@ class HotelLists extends StatelessWidget {
         var hotel = hotelController.hotelList[index];
         return Container(
             margin: EdgeInsets.only(bottom: 10.h),
-            child: RecommendationItem(data: hotel)
+            child: RecommendationItem(data: hotel, userId: userId,)
         );
       },
       itemCount: hotelController.hotelList.length,
