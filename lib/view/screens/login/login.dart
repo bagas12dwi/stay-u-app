@@ -47,7 +47,13 @@ class Login extends StatelessWidget {
                   SizedBox(
                     height: 20.h,
                   ),
-                  RoundedButton(text: "LOGIN", press: () => loginController.login()),
+                  RoundedButton(text: "LOGIN", press: () {
+                    if(loginController.emailController.text != "" && loginController.passwordController.text != "") {
+                      loginController.login();
+                    } else {
+                      Get.snackbar("Warning", "Email atau Password harus diisi !",margin: EdgeInsets.all(10.h), backgroundColor: Colors.amber);
+                    }
+                  }),
                   SizedBox(
                     height: 10.h,
                   ),

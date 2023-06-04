@@ -31,34 +31,37 @@ class HotelController extends GetxController{
 
   void getHotel() async{
     try {
-      isLoading.value = false;
+      isLoading.value = true;
       var hotels = await HotelProvider().getHotels();
       hotelList.assignAll(hotels);
     } catch (e) {
       print(e);
     } finally {
-      isLoading.value = true;
+      isLoading.value = false;
     }
   }
 
   void getRekomendasi() async{
     try {
-      isLoading.value = false;
+      isLoading.value = true;
       var hotels = await HotelProvider().getRekomendasi();
       hotelRecommendation.assignAll(hotels);
     } catch (e) {
       print(e);
     } finally {
-      isLoading.value = true;
+      isLoading.value = false;
     }
   }
 
-  void getDetail(int idHotel) async {
+  Future<void> getDetail(int idHotel) async {
     try {
+      isLoading.value = true;
       var hotelData = await HotelProvider().getDetail(idHotel);
       hotel.value = hotelData;
     } catch (e) {
       print(e);
+    } finally {
+      isLoading.value = false;
     }
   }
 

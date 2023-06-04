@@ -45,7 +45,15 @@ class Register extends StatelessWidget {
                   SizedBox(
                     height: 20.h,
                   ),
-                  RoundedButton(text: "Daftar", press: () => loginController.register()),
+                  RoundedButton(
+                      text: "Daftar",
+                      press: () {
+                        if(loginController.namaController.text != "" && loginController.emailController.text != "" && loginController.passwordController.text != ""){
+                          loginController.register();
+                        } else {
+                          Get.snackbar("Warning", "Nama atau Email atau Password harus diisi !",margin: EdgeInsets.all(10.h), backgroundColor: Colors.amber);
+                        }
+                      }),
                 ],
               ),
             ],

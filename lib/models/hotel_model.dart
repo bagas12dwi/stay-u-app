@@ -6,9 +6,6 @@ class Hotel {
   final String tipeKamar;
   final int harga;
   final int available;
-  final String? tglPesan;
-  final String? tglAkhir;
-  final int? userId;
   final int rate = Random().nextInt(5);
 
   Hotel(
@@ -16,10 +13,7 @@ class Hotel {
       required this.nomor,
       required this.tipeKamar,
       required this.harga,
-        this.tglPesan,
-        this.tglAkhir,
-        required this.available,
-       this.userId});
+        required this.available,});
 
   factory Hotel.fromJson(Map<String, dynamic> json){
     return Hotel(
@@ -31,11 +25,4 @@ class Hotel {
     );
   }
 
-  Map<String, dynamic> toJson() {
-    return {
-      'user_id': userId,
-      'tglPesan': tglPesan,
-      'tglAkhir': tglAkhir
-    };
-  }
 }
